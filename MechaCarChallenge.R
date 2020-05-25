@@ -1,5 +1,4 @@
 library(tidyverse)
-library(plyr)
 
 #Import csv file
 mpg_table <- read.csv(file="MechaCar_mpg.csv",check.names = F,stringsAsFactors = F)
@@ -27,9 +26,17 @@ summary(lm(mpg ~ vehicle_length + ground_clearance + vehicle_weight + AWD,data=m
 coil_table <- read.csv(file="Suspension_Coil.csv",check.names = F,stringsAsFactors = F)
 head(coil_table)
 
+#Create summary statustucal table
+coil_summary <- coil_table %>% group_by(Manufacturing_Lot) %>% summarize(Mean_PSI = mean(PSI), Median_PSI = median(PSI), PSI_Variance = var(PSI), PSI_StdDev = sd(PSI))
+
 #Create filtered table and convert collumn
 filteredcoil <- coil_table[,c("Manufacturing_Lot", "PSI")]
 filteredcoil$Manufacturing_Lot <- factor(filteredcoil$Manufacturing_Lot)
-
 aov(PSI ~ Manufacturing_Lot, data=filteredcoil)
 summary(aov(PSI ~ Manufacturing_Lot, data=filteredcoil))
+
+coil_filt <- coil_table[,c("Manufacturing_Lot", "PSI")]
+coil_filt$lot <- apply(coil_filt, 1, FUN = function(x) if (x[1]=="Lot1") 1 else if (x[1]=="Lot2") 2 else 3)
+coil_filt$Manufacturing_Lot <- NULL
+aov(PSI ~ lot, data=coil_filt)
+summary(aov(PSI ~ lot, data=coil_filt))
