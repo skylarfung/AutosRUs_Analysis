@@ -13,3 +13,7 @@ The summary statistic for the different manufacturing lots producing the suspens
 ## Suspension Coil T-Test
 
 A one-way ANOVA test was run to see if all the means are equal or if they were statistically different. The null hypothesis states that the means of the PSI is all the same for coils produced at the three lots. The alternative hypothesis stats that the means between the three lots are not equal. The significance level is assumed to be 0.05. After running the test, we fail to reject the null hypothesis. The p-value is 0.014 which is under the 0.05 significance level set in the beginning. Therefore, we can assume that the mean of the population is equal to 1500. 
+
+## Designed Study
+
+To compare the performance of Mecha Cars to other vehicles, specific variables should be researched and found. The specific variables needed for this test are customer ratings for both Mecha Cars and competitor vehicles along with the metrics for the car like cost, fuel efficiency, horsepower, car class, and a comfort metric.  The first question to ask is what feature matter to consumers and how do these features effect the rating of a car. You can run a multiple linear regression to find out which features matter the most to consumers and see how exactly they change the overall rating of the car. After the regression is made, we can then test each metric individually to see if there is a statistical difference between Mecha Cars and the general population. This will show which areas Mecha Cars excels at and which areas of manufacturing need improvement.
